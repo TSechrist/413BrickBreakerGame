@@ -39,7 +39,7 @@ public class Camera {
 
         xOff += xMove;
         yOff += yMove;
-        checkBlankSpace();
+//        checkBlankSpace();
     }
 
     public void centerOnTank(GameObject o){

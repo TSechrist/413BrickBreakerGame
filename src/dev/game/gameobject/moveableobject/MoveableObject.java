@@ -8,16 +8,17 @@ import dev.game.gfx.Assets;
 
 public abstract class MoveableObject extends GameObject {
 
-    protected final int SPEED = 6;
+    protected final int SPEED = 8;
     private final int ROTATE_SPEED = 4;
 
     protected int angle = 0;
     protected float vx, vy;
 
-    public MoveableObject(int playerNumber, Handler handler, float x, float y, int width, int height){
-        super(handler, x, y, width, height);
+//    public MoveableObject(int playerNumber, Handler handler, float x, float y, int width, int height){
+//        super(handler, x, y, width, height);
+//
+//    }
 
-    }
     public MoveableObject(Handler handler, float x, float y, int height, int width){
         super(handler, x, y, height, width);
 
@@ -57,6 +58,39 @@ public abstract class MoveableObject extends GameObject {
         this.angle = ((this.angle % 360) + this.ROTATE_SPEED);
 
     }
+
+    protected void moveUp(){
+
+        if(!checkObjectCollisions(0, -SPEED)){
+
+            y -= SPEED;
+        }
+
+    }
+
+    protected void moveDown(){
+
+        if(!checkObjectCollisions(0, SPEED)){
+
+            y += SPEED;
+        }
+    }
+
+    protected void moveLeft(){
+
+        if(!checkObjectCollisions(-SPEED, 0)){
+
+            x -= SPEED;
+        }
+    }
+
+    protected void moveRight(){
+
+        if(!checkObjectCollisions(SPEED, 0)){
+
+            x += SPEED;
+        }
+    }
     protected boolean CollisionWithTile(int x, int y){
         return handler.getMap().getTile(x, y).isSolid();
     }
@@ -65,11 +99,4 @@ public abstract class MoveableObject extends GameObject {
         return angle;
     }
 
-    protected void tankShoot(){
-        vx = (float) Math.round(SPEED * Math.cos(Math.toRadians(angle))) * 11 - 16;
-        vy = (float) Math.round(SPEED * Math.sin(Math.toRadians(angle))) * 11 - 16;
-
-        Bullet b = new Bullet(handler, Assets.bullet, x + vx, y + vy, this.angle, 32, 32);
-        handler.getMap().getObjectManager().addObject(b);
-    }
 }

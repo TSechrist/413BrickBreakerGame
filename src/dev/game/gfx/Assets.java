@@ -12,7 +12,7 @@ public class Assets {
         box1 = ImageLoader.loadImage("/res/textures/box2.bmp");
         box2 = ImageLoader.loadImage("/res/textures/box1.bmp");
         background = ImageLoader.loadImage("/res/textures/Background.jpg");
-        bullet = ImageLoader.loadImage("/res/textures/bullet2.jpg");
+        bullet = ImageLoader.loadImage("/res/textures/Bullet4.jpg");
         menuScreen = ImageLoader.loadImage("/res/textures/TitleScreen.jpg");
         powerup = ImageLoader.loadImage("/res/textures/PowerUp.jpg");
         gameover = ImageLoader.loadImage("/res/textures/Gameover.jpg");

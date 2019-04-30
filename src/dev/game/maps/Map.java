@@ -3,6 +3,7 @@ package dev.game.maps;
 import dev.game.Handler;
 import dev.game.gameobject.BreakableWall;
 import dev.game.gameobject.ObjectManager;
+import dev.game.gameobject.SideWall;
 import dev.game.gameobject.SolidWall;
 import dev.game.gameobject.moveableobject.Tank;
 import dev.game.gfx.Assets;
@@ -22,8 +23,7 @@ public class Map {
     public Map(Handler handler, String path) {
 
         this.handler = handler;
-        objectManager = new ObjectManager(handler, new Tank(1, handler, Assets.tank, 64, 64, 128, 128),
-                new Tank(2, handler, Assets.tank, 64, 64, 512, 128));
+        objectManager = new ObjectManager(handler, new Tank(handler, Assets.tank, 256, 16, 128, 715));
         loadWorld(path);
     }
 
@@ -85,7 +85,10 @@ public class Map {
                 else if(tiles[x][y] == 2)
                 {
                     objectManager.addObject(new BreakableWall(handler, x * 64, y * 64, 64, 64));
-
+                }
+                else if(tiles[x][y] == 3)
+                {
+                    objectManager.addObject(new SideWall(handler, x * 64, y * 64, 64, 64));
                 }
             }
         }

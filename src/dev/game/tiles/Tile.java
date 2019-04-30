@@ -11,6 +11,7 @@ public class Tile {
     public static Tile ground = new Ground(0);
     public static Tile unbreakableBox = new UnbreakableBox(1);
     public static Tile breakableBox = new BreakableBox(2);
+    public static Tile sideWall = new SideWall(3);
 
     public static final int TILE_WIDTH = 64, TILE_HEIGHT = 64;
 

@@ -9,17 +9,14 @@ import java.util.ArrayList;
 public class ObjectManager {
 
     private Tank tank1;
-    private Tank tank2;
     private Handler handler;
     private ArrayList<GameObject> gameObjects;
 
-    public ObjectManager(Handler handler, Tank tank1, Tank tank2){
+    public ObjectManager(Handler handler, Tank tank1){
         this.handler = handler;
         this.tank1 = tank1;
-        this.tank2 = tank2;
         gameObjects = new ArrayList<GameObject>();
         addObject(tank1);
-        addObject(tank2);
     }
 
     public void tick(){
@@ -48,14 +45,6 @@ public class ObjectManager {
 
     public void setTank1(Tank tank1) {
         this.tank1 = tank1;
-    }
-
-    public Tank getTank2() {
-        return tank2;
-    }
-
-    public void setTank2(Tank tank2) {
-        this.tank2 = tank2;
     }
 
     public Handler getHandler() {

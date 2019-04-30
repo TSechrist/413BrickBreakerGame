@@ -15,7 +15,7 @@ public class GameState extends State {
 
     public GameState(Handler handler){
         super(handler);
-        map = new Map(handler, "\\src\\res\\mapresourses\\map1.txt");
+        map = new Map(handler, "\\src\\res\\mapresourses\\map3.txt");
         handler.setMap(map);
 
     }

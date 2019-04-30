@@ -29,8 +29,8 @@ public class BreakableWall extends GameObject {
 
         handler.getMap().setTileArray((int)(x / 64), (int)(y / 64), 0);
         handler.getMap().getObjectManager().removeObject(this);
-        handler.getMap().getObjectManager().addObject(new PowerUp(handler, x + 24, y + 24, 16, 16));
 
+//        handler.getMap().getObjectManager().addObject(new PowerUp(handler, x + 24, y + 24, 16, 16));
     }
 
     @Override
