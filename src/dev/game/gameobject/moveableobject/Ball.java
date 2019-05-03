@@ -36,24 +36,10 @@ public class Ball extends MoveableObject {
 
             if(getObjectCollide(vx, vy) instanceof BreakableWall)
             {
-                getObjectCollide(vx, vy).damage(dmgAmt);
-                if(this.angle == 135)
-                {
-                    this.angle = 45;
+                bounce();
+                if(checkObjectCollisions(vx, vy)){
+                    getObjectCollide(vx, vy).damage(dmgAmt);
                 }
-                else if(this.angle == 45)
-                {
-                    this.angle = 135;
-                }
-                else if(this.angle == 225)
-                {
-                    this.angle = 315;
-                }
-                else
-                {
-                    this.angle = 225;
-                }
-
             }
             else if (getObjectCollide(vx, vy) instanceof Tank)
             {
@@ -68,34 +54,8 @@ public class Ball extends MoveableObject {
             }
             else if (getObjectCollide(vx, vy) instanceof SolidWall)
             {
-                if(this.angle == 315)
-                {
-                    this.angle = 45;
-                }
-                else
-                {
-                    this.angle = 135;
-                }
+                bounce();
             }
-//            else if (getObjectCollide(vx, vy) instanceof SideWall)
-//            {
-//                if(this.angle == 135)
-//                {
-//                    this.angle = 45;
-//                }
-//                else if(this.angle == 45)
-//                {
-//                    this.angle = 135;
-//                }
-//                else if(this.angle == 225)
-//                {
-//                    this.angle = 315;
-//                }
-//                else
-//                {
-//                    this.angle = 225;
-//                }
-//            }
 
             else if(getObjectCollide(vx, vy) instanceof PowerUp || getObjectCollide(vx, vy) instanceof Ball)
             {
@@ -120,5 +80,49 @@ public class Ball extends MoveableObject {
         g2d.drawImage(img, rotation, null);
     }
 
+    private void bounce(){
+
+        if(this.angle == 315)
+        {
+            this.angle = 45;
+            getVXY();
+            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            {
+                this.angle = 225;
+            }
+        }
+        else if(this.angle == 225)
+        {
+            this.angle = 315;
+            getVXY();
+            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            {
+                this.angle = 135;
+            }
+        }
+        else if(this.angle == 135)
+        {
+            this.angle = 255;
+            getVXY();
+            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            {
+                this.angle = 45;
+            }
+        }
+        else
+        {
+            this.angle = 135;
+            getVXY();
+            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            {
+                this.angle = 315;
+            }
+        }
+    }
+
+    private void getVXY(){
+        this.vx = (float) Math.round((this.SPEED * 2) * Math.cos(Math.toRadians(this.angle)));
+        this.vy = (float) Math.round((this.SPEED * 2) * Math.sin(Math.toRadians(this.angle)));
+    }
 
 }

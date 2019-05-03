@@ -90,7 +90,7 @@ public class Tank extends MoveableObject {
 
     protected void tankShoot(){
 
-        Ball b = new Ball(handler, Assets.bullet, 600, 100, 135, 16, 16);
+        Ball b = new Ball(handler, Assets.bullet, (int)(x + (this.width / 2)), y - 50, 225, 16, 16);
         handler.getMap().getObjectManager().addObject(b);
     }
 }
