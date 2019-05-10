@@ -8,10 +8,11 @@ import dev.game.gfx.Assets;
 
 public abstract class MoveableObject extends GameObject {
 
-    protected final int SPEED = 8;
     private final int ROTATE_SPEED = 4;
 
     protected int angle = 0;
+    protected int SPEED = 8;
+
     protected float vx, vy;
 
 //    public MoveableObject(int playerNumber, Handler handler, float x, float y, int width, int height){

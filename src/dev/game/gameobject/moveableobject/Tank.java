@@ -17,6 +17,9 @@ public class Tank extends MoveableObject {
     private int lives = 2;
     private float spawnX, spawnY;
     private int shootDelay = 0;
+    private boolean tankStartedGame = false;
+    private boolean tankPowerUp = true;
+
 
     public Tank(Handler handler, BufferedImage img, int width, int height, float x, float y){
 
@@ -24,7 +27,7 @@ public class Tank extends MoveableObject {
         spawnX = x;
         spawnY = y;
         this.img = img;
-
+        this.SPEED = 12;
     }
 
     @Override
@@ -43,8 +46,6 @@ public class Tank extends MoveableObject {
         }
         else{
 
-            this.x = spawnX;
-            this.y = spawnY;
             health = 100;
             lives--;
         }
@@ -66,7 +67,12 @@ public class Tank extends MoveableObject {
             moveLeft();
         if (handler.getKeyManager().right)
             moveRight();
-        if (handler.getKeyManager().shoot){
+        if (handler.getKeyManager().gameStart && !tankStartedGame)
+        {
+            tankStart();
+            tankStartedGame = true;
+        }
+        if (handler.getKeyManager().shoot && tankPowerUp){
 
             if (shootDelay < 0) {
                 tankShoot();
@@ -90,7 +96,41 @@ public class Tank extends MoveableObject {
 
     protected void tankShoot(){
 
+        Bullet b1 = new Bullet(handler, Assets.bullet, (int)x - 36, y - 50, 270, 16, 16);
+        Bullet b2 = new Bullet(handler, Assets.bullet, (int)x + this.width - 48, y - 50, 270, 16, 16);
+        handler.getMap().getObjectManager().addObject(b1);
+        handler.getMap().getObjectManager().addObject(b2);
+    }
+
+    protected void tankStart(){
+
         Ball b = new Ball(handler, Assets.bullet, (int)(x + (this.width / 2)), y - 50, 225, 16, 16);
         handler.getMap().getObjectManager().addObject(b);
     }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    public boolean isTankStartedGame() {
+        return tankStartedGame;
+    }
+
+    public void setTankStartedGame(boolean tankStartedGame) {
+        this.tankStartedGame = tankStartedGame;
+    }
+
+    public boolean isTankPowerUp() {
+        return tankPowerUp;
+    }
+
+    public void setTankPowerUp(boolean tankPowerUp) {
+        this.tankPowerUp = tankPowerUp;
+    }
+
+
 }

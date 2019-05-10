@@ -13,6 +13,7 @@ public class Ball extends MoveableObject {
     private int angle;
     private int dmgAmt = 25;
     private int SPEED = 9;
+    private float lastvx, lastvy;
 
     public Ball(Handler handler, BufferedImage img, float x, float y, int angle, int height, int width) {
         super(handler, x + 32, y + 32, height, width);
@@ -36,10 +37,10 @@ public class Ball extends MoveableObject {
 
             if(getObjectCollide(vx, vy) instanceof BreakableWall)
             {
+                lastvx = vx;
+                lastvy = vy;
                 bounce();
-                if(checkObjectCollisions(vx, vy)){
-                    getObjectCollide(vx, vy).damage(dmgAmt);
-                }
+                getObjectCollide(lastvx, lastvy).damage(dmgAmt);
             }
             else if (getObjectCollide(vx, vy) instanceof Tank)
             {
@@ -61,6 +62,12 @@ public class Ball extends MoveableObject {
             {
                 this.x += vx;
                 this.y += vy;
+            }
+            else if(getObjectCollide(vx, vy) instanceof SideWall)
+            {
+                handler.getMap().getObjectManager().removeObject(this);
+                handler.getMap().getObjectManager().getTank1().die();
+                handler.getMap().getObjectManager().getTank1().setTankStartedGame(false);
             }
         }
     }
@@ -86,7 +93,7 @@ public class Ball extends MoveableObject {
         {
             this.angle = 45;
             getVXY();
-            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            if (getObjectCollide(vx, vy) instanceof SolidWall || getObjectCollide(vx, vy) instanceof BreakableWall)
             {
                 this.angle = 225;
             }
@@ -95,25 +102,25 @@ public class Ball extends MoveableObject {
         {
             this.angle = 315;
             getVXY();
-            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            if (getObjectCollide(vx, vy) instanceof SolidWall || getObjectCollide(vx, vy) instanceof BreakableWall)
             {
                 this.angle = 135;
             }
         }
         else if(this.angle == 135)
         {
-            this.angle = 255;
+            this.angle = 225;
             getVXY();
-            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            if (getObjectCollide(vx, vy) instanceof SolidWall || getObjectCollide(vx, vy) instanceof BreakableWall)
             {
                 this.angle = 45;
             }
         }
-        else
+        else if(this.angle == 45)
         {
             this.angle = 135;
             getVXY();
-            if (getObjectCollide(vx, vy) instanceof SolidWall)
+            if (getObjectCollide(vx, vy) instanceof SolidWall || getObjectCollide(vx, vy) instanceof BreakableWall)
             {
                 this.angle = 315;
             }
@@ -121,8 +128,8 @@ public class Ball extends MoveableObject {
     }
 
     private void getVXY(){
-        this.vx = (float) Math.round((this.SPEED * 2) * Math.cos(Math.toRadians(this.angle)));
-        this.vy = (float) Math.round((this.SPEED * 2) * Math.sin(Math.toRadians(this.angle)));
+        this.vx = (float) Math.round((this.SPEED * 1.5) * Math.cos(Math.toRadians(this.angle)));
+        this.vy = (float) Math.round((this.SPEED * 1.5) * Math.sin(Math.toRadians(this.angle)));
     }
 
 }
