@@ -17,6 +17,7 @@ public class PowerUp extends GameObject {
     @Override
     public void tick() {
 
+
     }
 
     @Override

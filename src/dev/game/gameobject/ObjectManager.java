@@ -16,13 +16,15 @@ public class ObjectManager {
     public ObjectManager(Handler handler, Tank tank1){
         this.handler = handler;
         this.tank1 = tank1;
-        sb = new ScoreBoard(handler, 200, 1536, 200, 64);
+        sb = new ScoreBoard(handler, 64, 768, 200, 64);
         gameObjects = new ArrayList<GameObject>();
         addObject(tank1);
         addObject(sb);
     }
 
     public void tick(){
+
+
 
         for(int i = 0; i < gameObjects.size(); i++){
             GameObject o = gameObjects.get(i);

@@ -21,6 +21,10 @@ public class ScoreBoard extends GameObject{
 
         g.setColor(Color.blue);
         g.drawRect((int)x, (int)y, width, height);
+        g.setColor(Color.red);
+        for(int i = 0; i < handler.getMap().getObjectManager().getTank1().getLives(); i++){
+            g.fillRect((int)this.x + (12 * i),(int)this.y, 10, 10);
+        }
     }
 
     @Override

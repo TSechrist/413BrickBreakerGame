@@ -63,7 +63,7 @@ public class Ball extends MoveableObject {
                 this.x += vx;
                 this.y += vy;
             }
-            else if(getObjectCollide(vx, vy) instanceof SideWall)
+            else if(getObjectCollide(vx, vy) instanceof SideWall || getObjectCollide(vx, vy) instanceof ScoreBoard)
             {
                 handler.getMap().getObjectManager().removeObject(this);
                 handler.getMap().getObjectManager().getTank1().die();
