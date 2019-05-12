@@ -52,6 +52,8 @@ public class ObjectManager {
         this.tank1 = tank1;
     }
 
+    public ScoreBoard getSb() { return sb; }
+
     public Handler getHandler() {
         return handler;
     }

@@ -6,6 +6,8 @@ import java.awt.*;
 
 public class ScoreBoard extends GameObject{
 
+    private int score = 0;
+
 
     public ScoreBoard(Handler handler, float x, float y, int width, int height){
         super(handler, x, y, width, height);
@@ -25,10 +27,26 @@ public class ScoreBoard extends GameObject{
         for(int i = 0; i < handler.getMap().getObjectManager().getTank1().getLives(); i++){
             g.fillRect((int)this.x + (12 * i),(int)this.y, 10, 10);
         }
+        g.setColor(Color.black);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+        g.drawString(Integer.toString(score), (int)x + 20, (int)y + height);
     }
 
     @Override
     public void die(){
 
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void addToScore(int add)
+    {
+        this.score += add;
     }
 }
