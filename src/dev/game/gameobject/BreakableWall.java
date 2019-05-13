@@ -44,6 +44,13 @@ public class BreakableWall extends GameObject {
 
             }
         }
+
+        handler.getMap().getObjectManager().setBoxNum(handler.getMap().getObjectManager().getBoxNum() - 1);
+        if(handler.getMap().getObjectManager().getBoxNum() == 0)
+        {
+            handler.getGame().nextLevel();
+        }
+
     }
 
     @Override

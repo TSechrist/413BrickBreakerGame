@@ -95,7 +95,7 @@ public class Tank extends MoveableObject {
 
         if(!tankStartedGame)
         {
-            g.drawImage(Assets.bullet, (int)(x + (this.width / 2)), (int)y - 50, 16, 16, null);
+            g.drawImage(Assets.bullet34, (int)(x + (this.width / 2)), (int)y - 50, 16, 16, null);
         }
         g.drawImage(img, (int)x, (int)y, width, height, null);
         g.setColor(Color.red);

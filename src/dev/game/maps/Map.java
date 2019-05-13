@@ -85,6 +85,7 @@ public class Map {
                 else if(tiles[x][y] == 2)
                 {
                     objectManager.addObject(new BreakableWall(handler, x * 64, y * 64, 64, 64));
+                    objectManager.setBoxNum(objectManager.getBoxNum() + 1);
                 }
                 else if(tiles[x][y] == 3)
                 {

@@ -17,10 +17,10 @@ public class EndState extends State {
     @Override
     public void tick() {
 
-        if(handler.getKeyManager().anyKeyPressed)
-        {
-            handler.getGame().getDisplay().getFrame().dispatchEvent(new WindowEvent(handler.getGame().getDisplay().getFrame(), WindowEvent.WINDOW_CLOSING));
-        }
+//        if(handler.getKeyManager().anyKeyPressed)
+//        {
+//            handler.getGame().getDisplay().getFrame().dispatchEvent(new WindowEvent(handler.getGame().getDisplay().getFrame(), WindowEvent.WINDOW_CLOSING));
+//        }
 
     }
 

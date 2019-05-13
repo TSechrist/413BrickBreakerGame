@@ -1,5 +1,6 @@
 # csc413-SecondGame
 
-## Student Name :
-## Student ID :
+## Student Name : Thomas Sechrist
+
+## Student ID : 918679091
 

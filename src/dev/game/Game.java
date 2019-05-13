@@ -179,6 +179,18 @@ public class Game implements Runnable {
         return display;
     }
 
+    public void nextLevel(){
+        if(State.getState() instanceof GameState)
+        {
+            ((GameState) State.getState()).nextMap();
+        }
+
+    }
+
+    public State getState(){
+        return State.getState();
+    }
+
     public void setState(State state){
 
         State.setState(state);
