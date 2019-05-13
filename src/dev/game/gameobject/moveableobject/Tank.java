@@ -1,14 +1,9 @@
 package dev.game.gameobject.moveableobject;
 
-import dev.game.Game;
 import dev.game.Handler;
-import dev.game.gameobject.PowerUp;
 import dev.game.gfx.Assets;
-import dev.game.states.State;
-import dev.game.tiles.Tile;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 public class Tank extends MoveableObject {
@@ -63,10 +58,6 @@ public class Tank extends MoveableObject {
 
     private void getInput() {
 
-//        if(handler.getKeyManager().up)
-//            moveUp();
-//        if(handler.getKeyManager().down)
-//            moveDown();
         if (handler.getKeyManager().left)
             moveLeft();
         if (handler.getKeyManager().right)
@@ -87,11 +78,6 @@ public class Tank extends MoveableObject {
 
     @Override
     public void render(Graphics g) {
-
-//        AffineTransform rotation = AffineTransform.getTranslateInstance(x - handler.getCamera().getxOff(), y - handler.getCamera().getyOff());
-//        rotation.rotate(Math.toRadians(angle), img.getWidth() / 2.0, img.getHeight() / 2.0);
-//        Graphics2D g2d = (Graphics2D) g;
-//        g2d.drawImage(img, rotation, null);
 
         if(!tankStartedGame)
         {

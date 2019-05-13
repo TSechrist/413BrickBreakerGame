@@ -69,26 +69,6 @@ public class Game implements Runnable {
 
     private void render(){
 
-//        BufferedImage backBuffer1 = null;
-//        BufferedImage backBuffer2 = null;
-//        bs = display.getCanvas().getBufferStrategy();
-//        if(bs == null){
-//            display.getCanvas().createBufferStrategy((3));
-//            return;
-//        }
-//        g = bs.getDrawGraphics();
-//        g1 = backBuffer1.createGraphics();
-//
-//        g.clearRect(0,0, width, height);
-//        //Draw Here
-//
-//        if(State.getState() != null)
-//            State.getState().render(g);
-//
-//        bs.show();
-//        g.dispose();
-
-
         bs = display.getCanvas().getBufferStrategy();
         if(bs == null){
             display.getCanvas().createBufferStrategy((3));
