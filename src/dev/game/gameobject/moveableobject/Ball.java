@@ -60,7 +60,7 @@ public class Ball extends MoveableObject {
                 bounce();
             }
 
-            else if(getObjectCollide(vx, vy) instanceof PowerUp || getObjectCollide(vx, vy) instanceof Ball)
+            else if(getObjectCollide(vx, vy) instanceof PowerUp || getObjectCollide(vx, vy) instanceof Ball || getObjectCollide(vx, vy) instanceof Bullet)
             {
                 this.x += vx;
                 this.y += vy;
@@ -69,7 +69,6 @@ public class Ball extends MoveableObject {
             {
                 handler.getMap().getObjectManager().removeObject(this);
                 handler.getMap().getObjectManager().getTank1().die();
-                handler.getMap().getObjectManager().getTank1().setTankStartedGame(false);
             }
         }
     }

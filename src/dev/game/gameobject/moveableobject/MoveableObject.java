@@ -25,58 +25,6 @@ public abstract class MoveableObject extends GameObject {
 
     }
 
-    protected void moveForward() {
-        vx = (float) Math.round(SPEED * Math.cos(Math.toRadians(angle)));
-        vy = (float) Math.round(SPEED * Math.sin(Math.toRadians(angle)));
-
-        if(this instanceof Tank && getObjectCollide(vx, vy) instanceof PowerUp)
-        {
-            this.setHealth(100);
-            handler.getMap().getObjectManager().removeObject(getObjectCollide(vx, vy));
-        }
-
-        if(!checkObjectCollisions(vx, vy))
-        {
-            x += vx;
-            y += vy;
-        }
-    }
-    protected void moveBackward() {
-        vx = (float) Math.round(SPEED * Math.cos(Math.toRadians(angle)));
-        vy = (float) Math.round(SPEED * Math.sin(Math.toRadians(angle)));
-        if(!checkObjectCollisions(-vx, -vy))
-        {
-            x -= vx;
-            y -= vy;
-        }
-
-    }
-    protected void rotateLeft() {
-        this.angle = ((this.angle % 360) - this.ROTATE_SPEED);
-
-    }
-    protected void rotateRight() {
-        this.angle = ((this.angle % 360) + this.ROTATE_SPEED);
-
-    }
-
-    protected void moveUp(){
-
-        if(!checkObjectCollisions(0, -SPEED)){
-
-            y -= SPEED;
-        }
-
-    }
-
-    protected void moveDown(){
-
-        if(!checkObjectCollisions(0, SPEED)){
-
-            y += SPEED;
-        }
-    }
-
     protected void moveLeft(){
 
         if(!checkObjectCollisions(-SPEED, 0)){

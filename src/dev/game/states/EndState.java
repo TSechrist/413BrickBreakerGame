@@ -28,5 +28,7 @@ public class EndState extends State {
     public void render(Graphics g) {
 
         g.drawImage(Assets.gameover, 0, 0, 1600, 800, null);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+        g.drawString("High Score: " + (handler.getMap().getObjectManager().getSb().getScore()), 100, 600);
     }
 }

@@ -1,6 +1,8 @@
 package dev.game.gameobject;
 
 import dev.game.Handler;
+import dev.game.gameobject.moveableobject.PowerUpLives;
+import dev.game.gameobject.moveableobject.PowerUpPoints;
 
 import java.awt.*;
 
@@ -30,7 +32,18 @@ public class BreakableWall extends GameObject {
         handler.getMap().setTileArray((int)(x / 64), (int)(y / 64), 0);
         handler.getMap().getObjectManager().removeObject(this);
 
-        handler.getMap().getObjectManager().addObject(new PowerUp(handler, x + 24, y + 24, 16, 16));
+        if((int)(Math.random() * 4) == 3)
+        {
+            if((int)(Math.random() * 4) == 3)
+            {
+                handler.getMap().getObjectManager().addObject(new PowerUpLives(handler, x + 24, y + 24, 16, 16));
+            }
+            else
+            {
+                handler.getMap().getObjectManager().addObject(new PowerUpPoints(handler, x + 24, y + 24, 16, 16));
+
+            }
+        }
     }
 
     @Override

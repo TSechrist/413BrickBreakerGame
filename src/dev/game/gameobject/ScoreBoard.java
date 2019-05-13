@@ -27,6 +27,7 @@ public class ScoreBoard extends GameObject{
         for(int i = 0; i < handler.getMap().getObjectManager().getTank1().getLives(); i++){
             g.fillRect((int)this.x + (12 * i),(int)this.y, 10, 10);
         }
+        g.fillRect((int)this.x + width + 200, (int)this.y + 20, handler.getMap().getObjectManager().getTank1().getShootDelay() - 198, 30);
         g.setColor(Color.black);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
         g.drawString(Integer.toString(score), (int)x + 20, (int)y + height);

@@ -36,7 +36,7 @@ public class Bullet extends MoveableObject {
 
         if(this.checkObjectCollisions(vx, vy)){
 
-            if(getObjectCollide(vx, vy) instanceof BreakableWall || getObjectCollide(vx, vy) instanceof Tank)
+            if(getObjectCollide(vx, vy) instanceof BreakableWall)
             {
                 getObjectCollide(vx, vy).damage(dmgAmt);
                 this.active = false;
@@ -45,7 +45,7 @@ public class Bullet extends MoveableObject {
             {
                 this.active = false;
             }
-            else if(getObjectCollide(vx, vy) instanceof PowerUp)
+            else if(getObjectCollide(vx, vy) instanceof PowerUp || getObjectCollide(vx, vy) instanceof Ball)
             {
                 this.x += vx;
                 this.y += vy;

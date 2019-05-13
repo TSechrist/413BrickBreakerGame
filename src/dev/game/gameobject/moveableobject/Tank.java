@@ -18,7 +18,7 @@ public class Tank extends MoveableObject {
     private float spawnX, spawnY;
     private int shootDelay = 0;
     private boolean tankStartedGame = false;
-    private boolean tankPowerUp = true;
+    private boolean tankPowerUp = false;
 
 
     public Tank(Handler handler, BufferedImage img, int width, int height, float x, float y){
@@ -34,7 +34,10 @@ public class Tank extends MoveableObject {
     public void tick() {
 
         getInput();
-        shootDelay--;
+        if(shootDelay >= 0)
+        {
+            shootDelay--;
+        }
     }
 
     @Override
@@ -45,9 +48,10 @@ public class Tank extends MoveableObject {
             handler.getGame().setState(handler.getGame().endState);
         }
         else{
-
             health = 100;
             lives--;
+            tankPowerUp = false;
+            tankStartedGame = false;
         }
 
     }
@@ -74,9 +78,9 @@ public class Tank extends MoveableObject {
         }
         if (handler.getKeyManager().shoot && tankPowerUp){
 
-            if (shootDelay < 0) {
+            if (shootDelay <= 0) {
                 tankShoot();
-                shootDelay = 20;
+                shootDelay = 200;
             }
         }
     }
@@ -89,6 +93,10 @@ public class Tank extends MoveableObject {
 //        Graphics2D g2d = (Graphics2D) g;
 //        g2d.drawImage(img, rotation, null);
 
+        if(!tankStartedGame)
+        {
+            g.drawImage(Assets.bullet, (int)(x + (this.width / 2)), (int)y - 50, 16, 16, null);
+        }
         g.drawImage(img, (int)x, (int)y, width, height, null);
         g.setColor(Color.red);
         g.drawRect((int)x, (int)y, bounds.width, bounds.height);
@@ -106,6 +114,7 @@ public class Tank extends MoveableObject {
 
         Ball b = new Ball(handler, Assets.bullet, (int)(x + (this.width / 2)), y - 50, 225, 16, 16);
         handler.getMap().getObjectManager().addObject(b);
+        tankPowerUp = true;
     }
 
     public int getLives() {
@@ -132,5 +141,9 @@ public class Tank extends MoveableObject {
         this.tankPowerUp = tankPowerUp;
     }
 
+    public int getShootDelay()
+    {
+        return shootDelay;
+    }
 
 }
