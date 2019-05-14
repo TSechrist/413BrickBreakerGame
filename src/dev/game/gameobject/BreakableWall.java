@@ -31,6 +31,7 @@ public class BreakableWall extends GameObject {
 
         handler.getMap().setTileArray((int)(x / 64), (int)(y / 64), 0);
         handler.getMap().getObjectManager().removeObject(this);
+        handler.getMap().getObjectManager().getSb().addToScore(50);
 
         if((int)(Math.random() * 4) == 3)
         {

@@ -1,10 +1,7 @@
 package dev.game.maps;
 
 import dev.game.Handler;
-import dev.game.gameobject.BreakableWall;
-import dev.game.gameobject.ObjectManager;
-import dev.game.gameobject.SideWall;
-import dev.game.gameobject.SolidWall;
+import dev.game.gameobject.*;
 import dev.game.gameobject.moveableobject.Tank;
 import dev.game.gfx.Assets;
 import dev.game.tiles.Tile;
@@ -90,6 +87,12 @@ public class Map {
                 else if(tiles[x][y] == 3)
                 {
                     objectManager.addObject(new SideWall(handler, x * 64, y * 64, 64, 64));
+                }
+                else if(tiles[x][y] == 4)
+                {
+                    objectManager.addObject(new ObjBox(handler, x * 64, y * 64, 64, 64));
+                    objectManager.setObjNum(objectManager.getObjNum() + 1);
+
                 }
             }
         }

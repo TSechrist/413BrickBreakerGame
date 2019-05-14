@@ -13,6 +13,7 @@ public class ObjectManager {
     private ScoreBoard sb;
     private ArrayList<GameObject> gameObjects;
     private int boxNum = 0;
+    private int objNum = 0;
 
     public ObjectManager(Handler handler, Tank tank1){
         this.handler = handler;
@@ -69,6 +70,14 @@ public class ObjectManager {
 
     public void setGameObjects(ArrayList<GameObject> gameObjects) {
         this.gameObjects = gameObjects;
+    }
+
+    public int getObjNum() {
+        return objNum;
+    }
+
+    public void setObjNum(int objNum) {
+        this.objNum = objNum;
     }
 
     public int getBoxNum() {

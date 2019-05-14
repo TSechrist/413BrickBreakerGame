@@ -1,10 +1,7 @@
 package dev.game.gameobject.moveableobject;
 
 import dev.game.Handler;
-import dev.game.gameobject.BreakableWall;
-import dev.game.gameobject.GameObject;
-import dev.game.gameobject.PowerUp;
-import dev.game.gameobject.SolidWall;
+import dev.game.gameobject.*;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -36,7 +33,7 @@ public class Bullet extends MoveableObject {
 
         if(this.checkObjectCollisions(vx, vy)){
 
-            if(getObjectCollide(vx, vy) instanceof BreakableWall)
+            if(getObjectCollide(vx, vy) instanceof BreakableWall || getObjectCollide(vx, vy) instanceof ObjBox)
             {
                 getObjectCollide(vx, vy).damage(dmgAmt);
                 this.active = false;

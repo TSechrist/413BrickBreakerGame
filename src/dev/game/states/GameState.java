@@ -21,7 +21,7 @@ public class GameState extends State {
         map = new Map(handler, "\\src\\res\\mapresourses\\map3.txt");
         handler.setMap(map);
         mapNumber++;
-        System.out.println("****: " + handler.getMap().getObjectManager().getBoxNum());
+//        System.out.println("****: " + handler.getMap().getObjectManager().getBoxNum());
 
     }
 
@@ -44,7 +44,7 @@ public class GameState extends State {
             map = new Map(handler, "\\src\\res\\mapresourses\\map2.txt");
             handler.setMap(map);
             mapNumber++;
-            System.out.println("****: " + handler.getMap().getObjectManager().getBoxNum());
+//            System.out.println("****: " + handler.getMap().getObjectManager().getBoxNum());
             handler.getMap().getObjectManager().getSb().setScore(scoreTotal);
             handler.getMap().getObjectManager().getTank1().setLives(lifeTotal);
 

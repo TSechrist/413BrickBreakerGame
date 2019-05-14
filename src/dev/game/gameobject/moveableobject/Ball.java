@@ -35,14 +35,12 @@ public class Ball extends MoveableObject {
 
         if(this.checkObjectCollisions(vx, vy)){
 
-            if(getObjectCollide(vx, vy) instanceof BreakableWall)
+            if(getObjectCollide(vx, vy) instanceof BreakableWall || getObjectCollide(vx, vy) instanceof ObjBox)
             {
                 lastvx = vx;
                 lastvy = vy;
                 bounce();
                 getObjectCollide(lastvx, lastvy).damage(dmgAmt);
-                handler.getMap().getObjectManager().getSb().addToScore(50);
-
             }
             else if (getObjectCollide(vx, vy) instanceof Tank)
             {
