@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+//This class is just used for shooting blocks from the paddle
 public class Bullet extends MoveableObject {
 
     private BufferedImage img;

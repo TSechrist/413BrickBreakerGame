@@ -8,7 +8,7 @@ public class Launcher {
 
         int width = 1536;
         int height = 832;
-        Game game = new Game("Test Game!", width, height);
+        Game game = new Game("Rainbow Tank!", width, height);
         game.start();
     }
 }

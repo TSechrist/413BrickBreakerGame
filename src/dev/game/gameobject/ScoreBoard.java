@@ -29,7 +29,7 @@ public class ScoreBoard extends GameObject{
 //            g.fillRect((int)this.x + (12 * i),(int)this.y, 10, 10);
             g.drawImage(livesImg, (int)this.x + (18 * i), (int)this.y, null);
         }
-        g.setColor(Color.blue);
+        g.setColor(Color.black);
         g.fillRect((int)this.x + width, (int)this.y + 20, handler.getMap().getObjectManager().getTank1().getShootDelay(), 30);
 
 //        g.fillRect((int)this.x + width + 200, (int)this.y + 20, handler.getMap().getObjectManager().getTank1().getShootDelay() - 198, 30);

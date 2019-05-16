@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+
+//This is the bouncing ball object that breaks blocks
 public class Ball extends MoveableObject {
 
     private BufferedImage img;
@@ -33,6 +35,8 @@ public class Ball extends MoveableObject {
             this.y += vy;
         }
 
+
+        //Do different reflections based on what object it has hit
         if(this.checkObjectCollisions(vx, vy)){
 
             if(getObjectCollide(vx, vy) instanceof BreakableWall || getObjectCollide(vx, vy) instanceof ObjBox)
@@ -86,6 +90,7 @@ public class Ball extends MoveableObject {
         g2d.drawImage(img, rotation, null);
     }
 
+    //This will reflect the bounce based on the agle it hit and where it should bounce.
     private void bounce(){
 
         if(this.angle == 315)
